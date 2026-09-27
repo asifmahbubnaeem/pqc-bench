@@ -1,0 +1,11 @@
+{
+  "arm": "classical",
+  "tls_group": "X25519",
+  "rate_rps": 1000,
+  "measure_sec": 300,
+  "warmup_sec": 30,
+  "trial": 1,
+  "target_private_ip": "10.99.1.231",
+  "negotiated_verification": "   a:PKEY: ML-DSA-65, 15616 (bit); sigalg: ML-DSA-65\nNew, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384\nVerify return code: 18 (self-signed certificate)",
+  "timestamp_utc": "2026-09-27T10:17:47Z"
+}

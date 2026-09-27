@@ -1,0 +1,29 @@
+# Terraform
+**/.terraform/
+**/.terraform.lock.hcl
+**/terraform.tfstate
+**/terraform.tfstate.backup
+**/terraform.tfvars
+**/*.tfplan
+
+# Local secrets
+*.pem
+.aws-credentials
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+**/env/
+# Gatling / JMeter local artifacts
+target/
+*.jtl
+gatling-report/
+
+# OS
+.DS_Store
+Thumbs.db
+.ami-id
+results/*/*/trial-*/simulation.log
