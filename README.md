@@ -28,7 +28,10 @@ make bench-up
 # Run a scenario (pick one or run all three)
 ./scenarios/01-fresh-handshake-latency/run.sh 1000 3        # ~45 min
 ./scenarios/02-resumption/run.sh            300 3 10        # ~70 min
-./scenarios/03-payload-sweep/run.sh         200 3 10        # ~2h15m
+
+cd terraform/bench && terraform apply -auto-approve -var "use_spot=false" -var "tls_group=X25519"
+cd ../..
+./scenarios/03-payload-sweep/run.sh 200 3 10                # ~2h15m
 
 # Analyse (per-scenario Jupyter notebooks in analysis/)
 cd analysis && jupyter lab
@@ -80,7 +83,7 @@ The number-one killer of this project's budget is forgotten instances. Rules:
 1. **Always** `make bench-down` after any run. Set a daily calendar reminder for the first 30 days.
 2. Set an AWS Budget alert at $10/month in the AWS console.
 3. Never keep an Elastic IP allocated (this project doesn't need one).
-4. **On-demand instances by default.** Spot blocks in `terraform/loadgen/main.tf` and `terraform/target/main.tf` are commented out. Spot is ~50% cheaper but will interrupt multi-hour runs — scenario 03 is ~2h15m and I had the loadgen reclaimed mid-run on spot. Uncomment the `instance_market_options { market_type = "spot" ... }` blocks if you accept that risk.
+4. **Spot is the default** (`var.use_spot = true`), matching Phase 1's cost promise. For long runs — scenario 03 is ~2h15m and I had the loadgen reclaimed mid-run — pass `-var "use_spot=false"` to switch to on-demand. On-demand is ~2x the hourly cost but will not interrupt.
 
 ## Status
 

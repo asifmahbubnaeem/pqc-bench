@@ -63,11 +63,14 @@ resource "aws_instance" "loadgen" {
 
   vpc_security_group_ids = [aws_security_group.loadgen.id]
 
-  instance_market_options {
-    market_type = "spot"
-    spot_options {
-      spot_instance_type             = "one-time"
-      instance_interruption_behavior = "terminate"
+  dynamic "instance_market_options" {
+    for_each = var.use_spot ? [1] : []
+    content {
+      market_type = "spot"
+      spot_options {
+        spot_instance_type             = "one-time"
+        instance_interruption_behavior = "terminate"
+      }
     }
   }
 

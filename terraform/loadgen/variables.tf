@@ -49,3 +49,9 @@ variable "custom_ami" {
   type        = string
   default     = ""
 }
+
+variable "use_spot" {
+  description = "Launch this instance as spot (true) or on-demand (false)."
+  type        = bool
+  default     = true
+}

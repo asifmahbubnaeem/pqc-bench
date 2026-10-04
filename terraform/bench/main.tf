@@ -96,8 +96,9 @@ module "loadgen" {
   instance_architecture = var.instance_architecture
   key_name              = var.key_name
   allowed_ssh_cidrs     = var.allowed_ssh_cidrs
-  custom_ami            = var.loadgen_ami 
-  
+  custom_ami            = var.loadgen_ami
+  use_spot              = var.use_spot
+
 }
 
 module "target" {
@@ -112,5 +113,6 @@ module "target" {
   allowed_ssh_cidrs         = var.allowed_ssh_cidrs
   loadgen_security_group_id = module.loadgen.security_group_id
   tls_group                 = var.tls_group
-  custom_ami = var.target_ami
+  custom_ami                = var.target_ami
+  use_spot                  = var.use_spot
 }

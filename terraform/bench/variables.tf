@@ -53,3 +53,9 @@ variable "loadgen_ami" {
   type        = string
   default     = ""
 }
+
+variable "use_spot" {
+  description = "Launch EC2 instances as spot (cheap, interruptible) vs on-demand (reliable). Default true for Phase 1 cost parity; set false for long scenarios like 03."
+  type        = bool
+  default     = true
+}
