@@ -27,3 +27,7 @@ gatling-report/
 Thumbs.db
 .ami-id
 results/*/*/trial-*/simulation.log
+
+# Benchmark output
+results/
+results-*.tar.gz
