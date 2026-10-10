@@ -30,5 +30,5 @@ output "loadgen_public_ip" {
 
 output "loadgen_ssh" {
   description = "SSH command for the active loadgen. Note: key file differs per region."
-  value       = "ssh -i ~/.ssh/pqc-bench-key${var.loadgen_region == "us-east-1" ? "" : "-" + split("-", var.loadgen_region)[0]}.pem ubuntu@<loadgen_public_ip>"
+  value       = "ssh -i ~/.ssh/pqc-bench-key.pem ubuntu@<loadgen_public_ip>"
 }
